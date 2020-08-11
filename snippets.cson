@@ -2,7 +2,7 @@
 '.text.html.php':
   'Echo Snippet':
     'prefix': 'shecho'
-    'body': '<? echo $1 ?>'
+    'body': '<?php echo $1 ?>'
   'PHP snippet Full':
     'prefix': 'shphpfull'
     'body': """
@@ -17,7 +17,7 @@
     """
   'PHP Object Dump':
     'prefix': 'shdump'
-    'body': '<? echo "<pre>" . var_export($1, true) . "</pre>"; ?>'
+    'body': '<?php echo "<pre>" . var_export($1, true) . "</pre>"; ?>'
   'Section Comment':
     'prefix': 'sectioncomment'
     'body': """
@@ -39,22 +39,22 @@
     'prefix': 'acfif'
     'body': """
       <?php if(get_field('$1')) { ?>
-        <? echo get_field('$1') ?>
+        <?php echo get_field('$1') ?>
       <?php } ?>
     """
   'ACF If Subfield Exists':
     'prefix': 'acfifsub'
     'body': """
       <?php if(get_sub_field('$1')) { ?>
-        <? echo get_sub_field('$1') ?>
+        <?php echo get_sub_field('$1') ?>
       <?php } ?>
     """
   'ACF Link':
     'prefix': 'acflink'
     'body': """
       <?php if(get_field('$1')) { ?>
-        <a href="<? echo get_field('$1')['url'] ?>" target="<? echo get_field('$1')['target'] ?>">
-          <? echo get_field('$1')['title'] ?>
+        <a href="<?php echo get_field('$1')['url'] ?>" target="<?php echo get_field('$1')['target'] ?>">
+          <?php echo get_field('$1')['title'] ?>
         </a>
       <?php } ?>
     """
@@ -68,7 +68,7 @@
         <?php acf_responsive_image($image['id']); ?>
         sizes="auto"
         class="lazyload lazy-fade"
-        alt="<? echo $image_alt ?>"
+        alt="<?php echo $image_alt ?>"
         />
     <?php } ?>
     """
@@ -82,7 +82,7 @@
           <?php acf_responsive_image($image['id']); ?>
           sizes="auto"
           class="lazyload lazy-fade"
-          alt="<? echo $image_alt ?>"
+          alt="<?php echo $image_alt ?>"
           />
     <?php } ?>
     """
@@ -92,7 +92,7 @@
     <?php if (have_rows('$1')) { ?>
       <?php while( have_rows('$1') ): the_row(); ?>
         <?php if (get_sub_field('$2')) { ?>
-          <? echo get_sub_field('$2'); ?>
+          <?php echo get_sub_field('$2'); ?>
         <?php } ?>
       <?php endwhile; ?>
     <?php } ?>
@@ -103,15 +103,15 @@
     <?php $images = get_sub_field('image_row');
       if( $images ) { ?>
           <?php foreach( $images as $image ) { ?>
-            <a href="<? echo esc_url($image['url']); ?>">
+            <a href="<?php echo esc_url($image['url']); ?>">
               <img
                 <?php acf_responsive_image($image['id']); ?>
                 sizes="auto"
                 class="lazyload lazy-fade"
-                alt="<? echo esc_attr($image['alt']); ?>"
+                alt="<?php echo esc_attr($image['alt']); ?>"
                 />
             </a>
-            <p><? echo esc_html($image['caption']); ?></p>
+            <p><?php echo esc_html($image['caption']); ?></p>
           <?php } ?>
       <?php } ?>
     """
